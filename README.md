@@ -9,7 +9,6 @@
 [![Security: bandit](https://img.shields.io/badge/security-bandit-green.svg)](https://github.com/PyCQA/bandit)
 [![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/brannt/wallet/blob/master/.pre-commit-config.yaml)
 [![Semantic Versions](https://img.shields.io/badge/%F0%9F%9A%80-semantic%20versions-informational.svg)](https://github.com/brannt/wallet/releases)
-[![License](https://img.shields.io/github/license/brannt/wallet)](https://github.com/brannt/wallet/blob/master/LICENSE)
 
 Wallet payments API created as a test task.
 
