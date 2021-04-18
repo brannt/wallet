@@ -187,6 +187,7 @@ make clean
 ```
 </p>
 
+</details>
 <details>
 <summary>10. Docker-compose commands</summary>
 <p>
