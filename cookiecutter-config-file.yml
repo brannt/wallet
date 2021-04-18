@@ -1,0 +1,10 @@
+# This file contains values from Cookiecutter
+
+default_context:
+  project_name: "wallet"
+  project_description: "Wallet payements API created as a test task"
+  organization: "brannt"
+  license: "MIT"
+  version: "0.1.0"
+  github_name: "brannt"
+  email: "brannt@yandex.ru"

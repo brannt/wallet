@@ -1,0 +1,32 @@
+version: "3.3"
+services:
+
+
+  db:
+    image: mysql:8.0.23
+    volumes:
+      - app-db-data:/var/lib/mysql/
+    env_file:
+      - .env
+
+  app:
+    image: 'wallet:${TAG-latest}'
+    depends_on:
+      - db
+    env_file:
+      - .env
+    environment:
+      - SERVER_NAME=${DOMAIN?Variable not set}
+      - SERVER_HOST=https://${DOMAIN?Variable not set}
+      - DATABASE_URI=mysql://root:$MYSQL_ROOT_PASSWORD@db:3306/${MYSQL_DATABASE-wallet}?charset=utf8
+      - TEST_DATABASE_URI=mysql://root:$MYSQL_ROOT_PASSWORD@db:3306/test_${MYSQL_DATABASE-wallet}?charset=utf8
+    ports:
+      - "8000:8000"
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+      args:
+        INSTALL_DEV: ${INSTALL_DEV-false}
+
+volumes:
+  app-db-data:
