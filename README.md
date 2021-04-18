@@ -23,7 +23,7 @@ make compose_up
 To run the tests on MySQL:
 
 ```bash
-docker-compose run app pytest
+make compose_test
 ```
 
 ### Makefile usage
@@ -185,8 +185,40 @@ or to remove all build
 ```bash
 make clean
 ```
+</p>
 
-More information [here](https://github.com/brannt/wallet/tree/master/docker).
+<details>
+<summary>10. Docker-compose commands</summary>
+<p>
+Start the environment:
+  
+```bash
+make compose_up
+```
+
+(Re)build the environment:
+
+```bash
+make compose_build
+```
+
+Start the environment in dev mode (dev and test dependencies installed, uvicorn with `--reload` instead of gunicorn-hosted):
+
+```bash
+make compose_up_dev
+```
+
+(Re)build the environment in test mode:
+
+```bash
+make compose_build_dev
+```
+
+Run tests on MySQL database (as opposed to SQLite); requires that the environment is in dev mode:
+
+```bash
+make compose_test
+```
 
 </p>
 </details>
