@@ -12,6 +12,13 @@
 
 Wallet payments API created as a test task.
 
+To install the project and all dependencies locally:
+
+```bash
+make download-poetry
+make install NO_PRE_COMMIT=1
+``` 
+
 To bring the project up:
 
 ```bash
