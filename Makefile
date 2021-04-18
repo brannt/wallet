@@ -86,6 +86,19 @@ endif
 
 #! The end of the ugly part. I'm really sorry
 
+ifeq ($(DEV), 1)
+	COMPOSE_FILE_FLAG =
+else
+ 	COMPOSE_FILE_FLAG = -f docker-compose.yml
+endif
+
+
+ifeq ($(DAEMON), 1)
+	COMPOSE_DAEMON_FLAG = -d
+else
+ 	COMPOSE_DAEMON_FLAG =
+endif
+
 .PHONY: download-poetry
 download-poetry:
 	curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
@@ -147,20 +160,15 @@ clean: clean_build clean_docker
 
 .PHONY: compose_build
 compose_build:
-	$(COMPOSE_ENV) docker-compose -f docker-compose.yml build
+	$(COMPOSE_ENV) docker-compose $(COMPOSE_FILE_FLAG) build
 
 .PHONY: compose_up
 compose_up:
-	$(COMPOSE_ENV) docker-compose -f docker-compose.yml up
+	$(COMPOSE_ENV) docker-compose $(COMPOSE_FILE_FLAG) up $(COMPOSE_DAEMON_FLAG)
 
-.PHONY: compose_build_dev
-compose_build_dev:
-	$(COMPOSE_ENV) docker-compose build
+.PHONY: compose_down
+compose_down:
+	$(COMPOSE_ENV) docker-compose $(COMPOSE_FILE_FLAG) down
 
-.PHONY: compose_up_dev
-compose_up_dev:
-	$(COMPOSE_ENV) docker-compose up
-
-.PHONY: compose_test
 compose_test:
 	$(COMPOSE_ENV) docker-compose run app pytest

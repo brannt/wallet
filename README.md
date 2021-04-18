@@ -192,9 +192,21 @@ make clean
 <summary>10. Docker-compose commands</summary>
 <p>
 Start the environment:
-  
+
 ```bash
 make compose_up
+```
+
+Start the environment in daemon mode:
+
+```bash
+make compose_up DAEMON=1
+```
+
+Stop the environment:
+
+```bash
+make compose_down
 ```
 
 (Re)build the environment:
@@ -206,13 +218,13 @@ make compose_build
 Start the environment in dev mode (dev and test dependencies installed, uvicorn with `--reload` instead of gunicorn-hosted):
 
 ```bash
-make compose_up_dev
+make compose_up DEV=1
 ```
 
 (Re)build the environment in test mode:
 
 ```bash
-make compose_build_dev
+make compose_build DEV=1
 ```
 
 Run tests on MySQL database (as opposed to SQLite); requires that the environment is in dev mode:
